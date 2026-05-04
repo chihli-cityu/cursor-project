@@ -1,0 +1,64 @@
+---
+description: CityU HK logo fixed at top center on all HTML pages in this project
+globs: **/*.html
+alwaysApply: false
+---
+# CityU HTML header logo
+
+When creating or editing HTML in this project, **always** include the official City University of Hong Kong header logo at the **very top center** of the viewport.
+
+## Asset
+
+- Use **`CityUHK_logo.png`** (project root, same directory as top-level `.html` files).
+- If the HTML file lives in a subfolder, use a correct relative path (e.g. `../CityUHK_logo.png`) or copy/link the asset consistently; prefer one shared location and document the path in that page’s `<img src>`.
+
+## Markup and placement
+
+1. Put the logo **first meaningful content inside `<body>`** (before main layout wrappers), unless the page already uses a shared header partial—then ensure that partial matches this pattern.
+2. Wrap the image in a semantic header for accessibility, e.g. `<header class="cityu-site-header" role="banner">` containing a single `<img>` (or `<a href="…">` around the `<img>` if the logo should link to a home URL).
+
+## CSS (required behavior)
+
+- The logo row must sit flush at the **top** of the page (`top: 0`), span **full width**, and center the image horizontally.
+- **Do not distort** the image: set **either** `width` **or** `height` (or `max-width` / `max-height`), and use `height: auto` / `width: auto` on the other axis so aspect ratio is preserved.
+- Recommended pattern:
+
+```html
+<header class="cityu-site-header" role="banner">
+  <img
+    class="cityu-site-header__logo"
+    src="CityUHK_logo.png"
+    alt="City University of Hong Kong"
+  />
+</header>
+```
+
+```css
+.cityu-site-header {
+  width: 100%;
+  background: #000;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.cityu-site-header__logo {
+  display: block;
+  margin: 0 auto;
+  max-width: min(90vw, 420px);
+  width: auto;
+  height: auto;
+}
+```
+
+- Keep the header **full-bleed** (edge to edge): do not constrain `.cityu-site-header` inside a narrow `.page` max-width wrapper; place page content **below** this header.
+- **Black band**: the PNG includes a solid black background—use `background: #000` on `.cityu-site-header` so edges match non-black page backgrounds.
+
+## Optional: always-visible top bar
+
+If the design calls for the logo to stay visible while scrolling, use `position: sticky; top: 0; z-index` on `.cityu-site-header` (only when it does not break the page’s intended layout).
+
+## Do not
+
+- Omit the logo when adding new `.html` files.
+- Stretch the logo with both `width` and `height` fixed to unrelated values.
+- Center only the inner layout while leaving the logo inside a side-margined column unless the logo itself remains visually centered to the viewport.
