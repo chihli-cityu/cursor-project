@@ -1,0 +1,47 @@
+---
+description: Require CityUHK_logo.png in the top-left of every HTML page
+globs: "**/*.html"
+alwaysApply: false
+---
+
+# CityU logo on HTML pages
+
+Every HTML document in this project **must** show the City University of Hong Kong logo (`CityUHK_logo.png`) in the **top-left** corner of the viewport.
+
+## Asset location
+
+- Prefer **`CityUHK_logo.png` at the project repository root** so paths stay simple from top-level pages (`href="CityUHK_logo.png"` or `src="CityUHK_logo.png"`).
+- For HTML files under subfolders, use a correct relative path (e.g. `../CityUHK_logo.png`) or copy the asset alongside that subtree if the build layout requires it—**do not** ship pages with a broken image path.
+
+## Implementation
+
+1. Add a single logo element (typically `<a href="…">` wrapping `<img>` for branding link, or plain `<img>` if no URL is desired).
+2. Position it **fixed** (or equivalent) at **`top: 0; left: 0`** with padding/margin as needed so it does not touch viewport edges awkwardly (e.g. `top: 0.75rem; left: 0.75rem`).
+3. Set **`alt`** text that describes the logo (e.g. `alt="City University of Hong Kong"`).
+4. Constrain size so it does not dominate the layout (e.g. `max-height: 48px` or similar); preserve aspect ratio (`height: auto` with `width` or `max-*`).
+5. Use a **`z-index`** high enough that the logo stays visible above page content (e.g. `z-index: 1000`).
+
+## Example (inline CSS)
+
+```html
+<a class="cityu-brand" href="https://www.cityu.edu.hk/" target="_blank" rel="noopener noreferrer">
+  <img src="CityUHK_logo.png" alt="City University of Hong Kong" />
+</a>
+<style>
+  .cityu-brand {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 1000;
+    line-height: 0;
+  }
+  .cityu-brand img {
+    display: block;
+    max-height: 48px;
+    width: auto;
+    height: auto;
+  }
+</style>
+```
+
+When creating or editing any `*.html` file, **add or preserve** this logo block unless the user explicitly opts out for a one-off exception.

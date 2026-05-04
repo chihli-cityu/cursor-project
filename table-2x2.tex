@@ -1,0 +1,37 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\title{A simple document with a 2\texttimes 2 table}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Example table}
+
+Below is a two-row, two-column table (2\texttimes 2).
+
+\begin{table}[htbp]
+  \centering
+  \caption{A 2\texttimes 2 table}
+  \label{tab:two-by-two}
+  \begin{tabular}{|l|l|}
+    \hline
+    Row\,1 / Col\,1 & Row\,1 / Col\,2 \\
+    \hline
+    Row\,2 / Col\,1 & Row\,2 / Col\,2 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+You can omit the floating \texttt{table} wrapper and use only the \texttt{tabular} environment if you prefer the table inlined with the surrounding text:
+
+\begin{center}
+\begin{tabular}{cc}
+  \(\alpha\) & \(\beta\) \\
+  \(\gamma\) & \(\delta\) \\
+\end{tabular}
+\end{center}
+
+\end{document}
