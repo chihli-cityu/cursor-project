@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hello world</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+      background: #0f1419;
+      color: #e8eef5;
+    }
+
+    .cityu-site-header {
+      width: 100%;
+      background: #000;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .cityu-site-header__logo {
+      display: block;
+      margin: 0 auto;
+      max-width: min(90vw, 420px);
+      width: auto;
+      height: auto;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    main p {
+      margin: 0;
+      font-size: clamp(1.5rem, 5vw, 2.25rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+  </style>
+</head>
+<body>
+  <header class="cityu-site-header" role="banner">
+    <img
+      class="cityu-site-header__logo"
+      src="CityUHK_logo.png"
+      alt="City University of Hong Kong"
+    />
+  </header>
+  <main>
+    <p>hello world</p>
+  </main>
+</body>
+</html>
